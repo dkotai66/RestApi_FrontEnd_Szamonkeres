@@ -90,25 +90,27 @@ class App extends Component<{}, State>{
         <div className='col-lg-6'>
         <h2><i>Adatok</i></h2>
           <table>
-          <div>{this.state.ekszerek.map(ekszer => <div><tr><td>Típus: {ekszer.tipus}</td></tr> <tr><td>Anyag: {ekszer.anyag}</td></tr> <tr><td>Szín: {ekszer.szin}</td></tr> <tr><td>Ár: {ekszer.ar}</td></tr> <button onClick={(event) => this.handleDelete(ekszer.id)} className='btn btn-danger'>Törlés</button> <hr /> </div>)}</div>
+            <div>{this.state.ekszerek.map(ekszer =><tbody><tr><td><th>Típus</th> {ekszer.tipus}</td> <td><th>Anyag</th> {ekszer.anyag}</td> <td><th>Szín</th> {ekszer.szin}</td> <td><th>Ár</th> {ekszer.ar}</td></tr> <button onClick={(event) => this.handleDelete(ekszer.id)} className='btn btn-danger'>Törlés</button> <hr /> </tbody>)}</div>
           </table>
         </div>
         <div className='col-lg-6'>
           <h2><i>Új ékszer regisztrálása</i></h2>
           <div className='container'>
             <div className='row'>
-              <div className='col-lg-3'>
-                <span>Anyag: <input required value={this.state.regAnyag} onChange={e => this.setState({regAnyag: e.currentTarget.value})}/></span><br />
-              </div>
-              <div className='col-lg-3'>
-                <span>Ár: <input type="number" required value={this.state.regAr} onChange={e => this.setState({regAr:parseInt (e.currentTarget.value)})}/></span><br />
-              </div>
-              <div className='col-lg-3'>
-                <span>Szin: <input type="text" value={this.state.regSzin} onChange={e => this.setState({regSzin: e.currentTarget.value})}/></span><br />
-              </div>
-              <div className='col-lg-3'>
-                <span>Tipus: <input type="text" required value={this.state.regTipus} onChange={e => this.setState({regTipus: e.currentTarget.value})}/></span><br />
-              </div>
+              <form >
+                <div className='form-group col-lg-3'>
+                  <span>Anyag: <input className='form-control' required value={this.state.regAnyag} onChange={e => this.setState({regAnyag: e.currentTarget.value})}/></span><br />
+                </div>
+                <div className='form-group col-lg-3'>
+                  <span>Ár: <input className='form-control' type="number" required value={this.state.regAr} onChange={e => this.setState({regAr:parseInt (e.currentTarget.value)})}/></span><br />
+                </div>
+                <div className='form-group col-lg-3'>
+                  <span>Szin: <input className='form-control' type="text" value={this.state.regSzin} onChange={e => this.setState({regSzin: e.currentTarget.value})}/></span><br />
+                </div>
+                <div className='form-group col-lg-3'>
+                  <span>Tipus: <input className='form-control' type="text" required value={this.state.regTipus} onChange={e => this.setState({regTipus: e.currentTarget.value})}/></span><br />
+                </div>
+              </form>        
             </div>
             <br />
             <button onClick={this.handleRegister} className='btn btn-primary'>Regisztrál</button>
